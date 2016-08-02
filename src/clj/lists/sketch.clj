@@ -1,4 +1,4 @@
-(ns sketch
+(ns lists.sketch
   (:require [mount.core :refer [defstate] :as mount]
             [quil.core :as q]
             [quil.middleware :as m]))

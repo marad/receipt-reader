@@ -1,9 +1,10 @@
-(ns core
-  (:require [image :as i]
-            [reader :as r]
+(ns lists.core
+  (:require [lists.image :as i]
+            [lists.reader :as r]
             [clojure.java.shell :refer [sh]]
             [clojure.string :as s])
-  (:import java.io.File))
+  (:import java.io.File)
+  (:gen-class))
 
 (defn remove-ext [path]
   (->> path
@@ -34,11 +35,11 @@
     (println "Processing scanned list...")
     (r/process scanned-path)))
 
-(defn -main []
-  (println "Receipt image path: ")
-  (let [data (process-image (read-line))]
-    (println data))
-  )
+(defn -main [& args]
+  (let [image-path (first args)
+        data (process-image image-path)]
+    (println data)
+    data))
 
 
 ; image -code-> processed image -tesseract-> text file -code-> csv

@@ -1,4 +1,4 @@
-(ns reader
+(ns lists.reader
   (:require [clojure.string :as s]))
 
 (def name-regex #"^([A-Za-z0-9,.'/: ]+)\s[AFB]\s")

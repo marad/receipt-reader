@@ -1,4 +1,4 @@
-(ns gui
+(ns lists.gui
   (:require [mount.core :refer [defstate] :as mount]
             [seesaw.core :refer [frame config! pack! show!]]))
 

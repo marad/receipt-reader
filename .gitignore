@@ -1,3 +1,6 @@
 .nrepl-history
 .nrepl-port
 data/
+target/
+.#*
+
