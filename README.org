@@ -42,6 +42,14 @@ trained to read receipts. The language is located in the /rec.traineddata/ file
 in the repository and should be installed in Tesseract. Also Tesseract binary 
 needs to be available from command line.
 
+** Development
+
+If you're Clojure developer I'm sure you know what to do:
+
+~boot repl~
+
+And have fun! :)
+
 * What could be better?
 Well...
 
