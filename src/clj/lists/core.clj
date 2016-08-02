@@ -37,9 +37,8 @@
 
 (defn -main [& args]
   (let [image-path (first args)
+        out-path (second args)
         data (process-image image-path)]
-    (println data)
-    data))
-
-
-; image -code-> processed image -tesseract-> text file -code-> csv
+    (println "Writing output file" out-path "...")
+    (spit "test.edn" (with-out-str (pr data)))
+    (System/exit 0)))

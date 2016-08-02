@@ -1,4 +1,5 @@
 (ns lists.reader
+  (:refer-clojure :exclude [load-file])
   (:require [clojure.string :as s]))
 
 (def name-regex #"^([A-Za-z0-9,.'/: ]+)\s[AFB]\s")
