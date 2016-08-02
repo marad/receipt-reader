@@ -1,12 +1,54 @@
+* About the problem
 
-* Converting receipt to text
+I've always wanted to keep track of my expenditures. The problem is that there are so 
+many receipts and they're so long! I've tried digitalizing them by hand but it's too
+time consuming.
 
-** Preprocessing Image
+So grabbed some tools and got to work. This project creates runnable CLI program (jar) 
+that expects two arguments: receipt scan path and output data path. After doing it's 
+magic the data file should contain items read from scan.
 
-1. Deskewing image (image namespace)
-2. Threshold filter
-3. JPEG is not the best available format (PNG is nice)
+I've created this project in two days (including training tesseract to recognize 
+receipt font) so it's not 100% accurate. Still, it's much easier to correct few 
+mistakes than to rewrite everything by hand!
 
-** OCR on Image
+* How does it work?
 
-~tesseract receipt.jpg out -l rec~
+The pipeline is quite simple:
+
+1. image is preprocessed (deskewed, thresholded, etc.)
+2. then it's fed to tesseract engine for text recognition
+3. the text then is parsed with some regexes
+4. ultimately the data is saved to EDN file
+
+My goal is to create another tool that would read the EDN file and allow further
+processing (hand-fixing) the data to final form (CSV or SQLITE? - we will see).
+
+** Building
+
+To build this project the only thing you will need is working [[http://boot-clj.com/][boot]] environment.
+If you've got this just run:
+
+~boot build~
+
+** Running
+
+The above will create a file /target/project.jar/ that you can run:
+
+~java -jar project.jar <scanned-receipt> <output-data-file>~
+
+The only *but* is that you need to have [[https://github.com/tesseract-ocr/tesseract][Tesseract]] installed along with language
+trained to read receipts. The language is located in the /rec.traineddata/ file
+in the repository and should be installed in Tesseract. Also Tesseract binary 
+needs to be available from command line.
+
+* What could be better?
+Well...
+
+- there are no tests
+- the code is awful
+- missing tests
+- there is no error handling
+- did I mention that there are no tests?
+- maybe better trained tesseract font for greater accuracy
+- and finally: tests
