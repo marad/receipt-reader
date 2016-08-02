@@ -1,0 +1,12 @@
+
+* Converting receipt to text
+
+** Preprocessing Image
+
+1. Deskewing image (image namespace)
+2. Threshold filter
+3. JPEG is not the best available format (PNG is nice)
+
+** OCR on Image
+
+~tesseract receipt.jpg out -l rec~
