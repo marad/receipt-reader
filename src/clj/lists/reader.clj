@@ -2,7 +2,7 @@
   (:refer-clojure :exclude [load-file])
   (:require [clojure.string :as s]))
 
-(def name-regex #"^([A-Za-z0-9,.'/: ]+)\s[AFB]\s")
+(def name-regex #"^([A-Za-z0-9,.'/:\-% ]+)\s[AFB]\s")
 (def amount-regex #"^.+\s[AFB]\s([0-9A-Z,.]+)\s" )
 (def item-price-regex #"^.+\s[AFB]\s.+\s[xX]\s?([0-9A-Z,.]+)\s")
 (def price-regex #"\s(-?[0-9A-Z,.]+)[AFB]$")

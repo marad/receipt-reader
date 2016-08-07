@@ -39,6 +39,6 @@
   (let [image-path (first args)
         out-path (second args)
         data (process-image image-path)]
-    (println "Writing output file" out-path "...")
-    (spit "test.edn" (with-out-str (pr data)))
+    (println "Writing output file to " out-path)
+    (spit out-path (with-out-str (pr data)))
     (System/exit 0)))
