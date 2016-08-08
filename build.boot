@@ -1,7 +1,8 @@
 (set-env!
  :source-paths #{"src/clj" "src/java"}
  :resource-paths #{"resources"}
- :dependencies '[[org.clojure/clojure "1.8.0"]])
+ :dependencies '[[org.clojure/clojure "1.8.0"]
+                 [info.debatty/java-string-similarity "RELEASE"]])
 
 (task-options!
  pom {:project 'list-reader

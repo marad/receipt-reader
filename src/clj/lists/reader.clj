@@ -1,6 +1,7 @@
 (ns lists.reader
   (:refer-clojure :exclude [load-file])
-  (:require [clojure.string :as s]))
+  (:require [clojure.string :as s])
+  (:import info.debatty.java.stringsimilarity.Levenshtein))
 
 (def name-regex #"^([A-Za-z0-9,.'/:\-% ]+)\s[AFB]\s")
 (def amount-regex #"^.+\s[AFB]\s([0-9A-Z,.]+)\s" )
@@ -13,7 +14,8 @@
       s/split-lines))
 
 (defn skip-header [data]
-  (rest (drop-while #(not (= "PARAGON FISKALNY" %)) data)))
+  (let [lev (Levenshtein.)]
+    (rest (drop-while #(> (.distance lev "PARAGON FISKALNY" %) 4) data))))
 
 (defn drop-footer [data]
   (take-while #(not (.startsWith % "SPRZEDAZ")) data))
